@@ -4,17 +4,17 @@ class Solution(object):
         if not head or not head.next:
             return
         
-        a = b = head
-        while b and b.next:
-            a = a.next
-            b = b.next.next
+        slow = fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
         
         p = None
-        while a:
-            n = a.next
-            a.next = p
-            p = a
-            a = n
+        while slow:
+            n = slow.next
+            slow.next = p
+            p = slow
+            slow = n
         
         x = head
         y = p
